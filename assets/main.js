@@ -30,6 +30,24 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // Adressen udfyldes, når Apps Script-postkassen (se kontaktformular/Code.gs) er udrullet.
 const FORM_ENDPOINT = '';
 
+const MESSAGES = {
+  da: {
+    invalid: 'Udfyld venligst navn, en gyldig e-mail og en besked.',
+    inactive: 'Formularen er ikke aktiveret endnu. Prøv igen senere.',
+    sending: 'Sender …',
+    sent: 'Tak for din besked! Jeg vender tilbage hurtigst muligt.',
+    failed: 'Beskeden kunne ikke sendes. Prøv igen om lidt.',
+  },
+  en: {
+    invalid: 'Please enter your name, a valid email and a message.',
+    inactive: 'The form is not active yet. Please try again later.',
+    sending: 'Sending …',
+    sent: 'Thank you for your message! I will get back to you as soon as possible.',
+    failed: 'The message could not be sent. Please try again shortly.',
+  },
+};
+const msg = MESSAGES[document.documentElement.lang] || MESSAGES.da;
+
 const form = document.getElementById('contact-form');
 const statusEl = document.getElementById('form-status');
 
@@ -42,18 +60,18 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   if (!form.checkValidity()) {
-    setStatus('Udfyld venligst navn, en gyldig e-mail og en besked.', 'error');
+    setStatus(msg.invalid, 'error');
     form.reportValidity();
     return;
   }
   if (!FORM_ENDPOINT) {
-    setStatus('Formularen er ikke aktiveret endnu. Prøv igen senere.', 'error');
+    setStatus(msg.inactive, 'error');
     return;
   }
 
   const button = form.querySelector('button[type="submit"]');
   button.disabled = true;
-  setStatus('Sender …');
+  setStatus(msg.sending);
 
   try {
     const response = await fetch(FORM_ENDPOINT, {
@@ -63,9 +81,9 @@ form.addEventListener('submit', async (event) => {
     const result = await response.json();
     if (!result.ok) throw new Error(result.error || 'Ukendt fejl');
     form.reset();
-    setStatus('Tak for din besked! Jeg vender tilbage hurtigst muligt.', 'ok');
+    setStatus(msg.sent, 'ok');
   } catch (err) {
-    setStatus('Beskeden kunne ikke sendes. Prøv igen om lidt.', 'error');
+    setStatus(msg.failed, 'error');
   } finally {
     button.disabled = false;
   }
