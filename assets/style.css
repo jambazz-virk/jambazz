@@ -117,15 +117,55 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -0.03em; line-height
 
 .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
 .split p { color: var(--muted); font-size: 1.1rem; }
-.photo {
-  aspect-ratio: 4 / 5; border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  display: grid; place-items: center; color: #fff; font-weight: 600; opacity: .9;
-}
-@media (max-width: 820px) { .split { grid-template-columns: 1fr; } .photo { aspect-ratio: 16 / 10; } }
+@media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
 
-.contact { text-align: center; }
-.contact .section-lead { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
+.checklist { list-style: none; padding: 0; margin: 0 0 32px; }
+.checklist li { position: relative; padding-left: 30px; margin-bottom: 10px; color: var(--muted); }
+.checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+
+/* Lille "skærmbillede" af Timearket.biz */
+.mock {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--accent-2) 45%, transparent);
+}
+.mock-bar { display: flex; gap: 6px; margin-bottom: 18px; }
+.mock-bar span { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+.mock-title { font-weight: 800; font-size: 1.15rem; margin-bottom: 14px; }
+.mock-row { padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; font-size: .95rem; }
+.mock-row.ok { background: color-mix(in srgb, #2fb36b 13%, transparent); color: var(--text); }
+.mock-cta {
+  margin-top: 16px; text-align: center; padding: 12px; border-radius: 999px;
+  background: #2fb36b; color: #fff; font-weight: 600;
+}
+
+.facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.facts li {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 20px; display: flex; flex-direction: column;
+}
+.facts span { color: var(--muted); font-size: .95rem; }
+
+/* Kontaktformular */
+.contact { max-width: 760px; }
+.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-full { grid-column: 1 / -1; }
+.field label { font-weight: 600; font-size: .95rem; }
+.field input, .field textarea {
+  font: inherit; color: var(--text); background: var(--card);
+  border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; width: 100%;
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+.field textarea { resize: vertical; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.privacy { color: var(--muted); font-size: .9rem; margin: 0; }
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.form-actions .btn { border: 0; cursor: pointer; font: inherit; font-weight: 600; }
+.form-actions .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+.form-status { margin: 0; font-weight: 500; }
+.form-status.ok { color: #2fb36b; }
+.form-status.error { color: var(--accent); }
+@media (max-width: 600px) { .contact-form { grid-template-columns: 1fr; } }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); padding: 40px 0; font-size: .95rem; }
