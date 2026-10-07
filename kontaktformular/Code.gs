@@ -13,6 +13,11 @@ const MAX_MESSAGE_LENGTH = 5000;
 const MAX_MAILS_PER_HOUR = 20;
 const RECIPIENT_TAG = 'github';
 
+/** Svar ved almindeligt besøg på webappens adresse, så man kan se, at den kører. */
+function doGet() {
+  return json_({ ok: true, status: 'jambazz-kontakt kører' });
+}
+
 function doPost(e) {
   try {
     const p = (e && e.parameter) || {};
@@ -44,7 +49,7 @@ function doPost(e) {
     return json_({ ok: true });
   } catch (err) {
     console.error(err);
-    return json_({ ok: false, error: 'Serverfejl' });
+    return json_({ ok: false, error: 'Serverfejl: ' + err.message });
   }
 }
 
@@ -80,4 +85,10 @@ function json_(obj) {
 /** Kør denne én gang fra editoren for at godkende adgang og sende en testmail. */
 function testMail() {
   MailApp.sendEmail(recipient_(), 'jambazz.dk: Testmail fra kontaktformularen', 'Det virker!');
+}
+
+/** Kør denne fra editoren for at afprøve doPost med en testbesked og se resultatet i loggen. */
+function testDoPost() {
+  const result = doPost({ parameter: { name: 'Test', email: 'test@example.com', message: 'Testbesked', lang: 'da' } });
+  console.log(result.getContent());
 }

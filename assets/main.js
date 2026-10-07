@@ -77,6 +77,7 @@ form.addEventListener('submit', async (event) => {
     form.reset();
     setStatus(msg.sent, 'ok');
   } catch (err) {
+    console.error('Kontaktformular:', err);
     setStatus(msg.failed, 'error');
   } finally {
     button.disabled = false;
