@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jambazz – små, elegante automatiseringer</title>
-  <meta name="description" content="jambazz udvikler skræddersyede automatiseringer i Google Sheets, Apps Script og RPA, der fjerner manuelt rutinearbejde. Bl.a. Timearket.biz til revisionsfirmaer.">
+  <meta name="description" content="jambazz udvikler skræddersyede automatiseringer i Google Sheets, Apps Script og RPA, der fjerner manuelt rutinearbejde. Bl.a. e-conomic fakturering til revisionsfirmaer.">
   <meta property="og:title" content="jambazz – små, elegante automatiseringer">
   <meta property="og:description" content="Skræddersyede automatiseringer i Google Sheets, Apps Script og RPA, der fjerner manuelt rutinearbejde.">
   <meta property="og:url" content="https://jambazz.dk/">
@@ -27,7 +27,7 @@
       </button>
       <nav id="menu" class="menu">
         <a href="#ydelser">Ydelser</a>
-        <a href="#timearket">Timearket.biz</a>
+        <a href="#fakturering">e-conomic fakturering</a>
         <a href="#om">Om</a>
         <a href="#kontakt" class="btn btn-small">Kontakt</a>
         <a href="en/" class="lang-switch" hreflang="en" lang="en" aria-label="Switch to English">EN</a>
@@ -43,7 +43,7 @@
         <p class="lead">jambazz bygger skræddersyede automatiseringer, der fjerner manuelt rutinearbejde, så du og dine kolleger kan bruge tiden på det, der faktisk kræver jer.</p>
         <div class="actions">
           <a href="#kontakt" class="btn">Fortæl om din opgave</a>
-          <a href="#timearket" class="btn btn-ghost">Se et eksempel</a>
+          <a href="#fakturering" class="btn btn-ghost">Se et eksempel</a>
         </div>
       </div>
       <div class="blob" aria-hidden="true"></div>
@@ -73,33 +73,57 @@
       </div>
     </section>
 
-    <section id="timearket" class="section section-alt">
+    <section id="principper" class="section section-alt">
+      <div class="container">
+        <h2>Jeres løsning, jeres system</h2>
+        <p class="section-lead">Jeg bygger ikke noget, I bliver afhængige af mig for at bruge. Det, jeg laver, er skræddersyet til jer, og det er jeres.</p>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">⌂</div>
+            <h3>Bor hos jer</h3>
+            <p>Løsningen kører i jeres egne systemer og konti, fx jeres Google Workspace, og ikke på en server hos mig.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">✦</div>
+            <h3>I ejer det hele</h3>
+            <p>Kode, data og dokumentation tilhører jer. Ingen licenser, ingen abonnement og ingen sort boks.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">⇄</div>
+            <h3>Løst koblet og åbent</h3>
+            <p>Bygget i overskuelige, adskilte dele, så I selv kan udvikle videre eller give andre udviklere adgang.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fakturering" class="section">
       <div class="container split">
         <div class="reveal">
           <p class="eyebrow">Eksempel</p>
-          <h2>Timearket.biz</h2>
+          <h2>e-conomic fakturering</h2>
           <p>Et værktøj til revisions- og bogføringsfirmaer, bygget i Google Sheets. Det gør månedens vej fra medarbejdernes timesedler til færdigt fakturagrundlag til et spørgsmål om få klik.</p>
           <ul class="checklist">
             <li>Indlæser kunder, medarbejdere og alle timesedler i ét hug</li>
             <li>Fordeler timer på kunder, årsregnskab og interne opgaver</li>
-            <li>Overfører småtimer og noter automatisk til næste måned</li>
-            <li>Danner fakturaoversigt og CSV-fil klar til e-conomic</li>
+            <li>Danner en fakturaoversigt til kontrol, inden der faktureres</li>
+            <li>Opretter fakturaer i bulk direkte i e-conomic via API</li>
           </ul>
-          <a href="#kontakt" class="btn">Hør mere om Timearket.biz</a>
+          <a href="#kontakt" class="btn">Hør mere om e-conomic fakturering</a>
         </div>
         <div class="mock reveal" aria-hidden="true">
           <div class="mock-bar"><span></span><span></span><span></span></div>
           <div class="mock-title">🍒 Månedslukning – Maj</div>
           <div class="mock-row ok">✓ Kunder.xlsx indlæst</div>
           <div class="mock-row ok">✓ 12 af 12 timesedler fundet</div>
-          <div class="mock-row ok">✓ Småtimer overført til juni</div>
-          <div class="mock-row ok">✓ Fakturakladde til e-conomic dannet</div>
+          <div class="mock-row ok">✓ Fakturaoversigt klar til kontrol</div>
+          <div class="mock-row ok">✓ 38 fakturaer oprettet i e-conomic</div>
           <div class="mock-cta">Kør nu</div>
         </div>
       </div>
     </section>
 
-    <section id="om" class="section">
+    <section id="om" class="section section-alt">
       <div class="container split">
         <div class="reveal">
           <h2>Om jambazz</h2>
@@ -115,7 +139,7 @@
       </div>
     </section>
 
-    <section id="kontakt" class="section section-alt">
+    <section id="kontakt" class="section">
       <div class="container contact">
         <h2>Lad os tage en snak</h2>
         <p class="section-lead">Fortæl kort om din opgave eller dit spørgsmål. Jeg vender typisk tilbage inden for én hverdag. Du kan også skrive direkte til <a href="mailto:info@jambazz.dk">info@jambazz.dk</a>.</p>
