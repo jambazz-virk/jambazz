@@ -27,8 +27,8 @@ document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Kontaktformular
-// FormSubmit sender beskeden som e-mail til info@jambazz.dk, som ImprovMX videresender til Gmail.
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@jambazz.dk';
+// Apps Script-postkassen (kontaktformular/Code.gs) sender beskeden som e-mail til ejerens Gmail.
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzV8F_k1hHZvH5h6sRMqo8mdHtwwKQcuOgxzILuujdZe6UHoIlX57Kccgnnz6oOzQ_c/exec';
 
 const MESSAGES = {
   da: {
@@ -70,11 +70,10 @@ form.addEventListener('submit', async (event) => {
   try {
     const response = await fetch(FORM_ENDPOINT, {
       method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: new FormData(form),
+      body: new URLSearchParams(new FormData(form)),
     });
     const result = await response.json();
-    if (String(result.success) !== 'true') throw new Error(result.message || 'Ukendt fejl');
+    if (!result.ok) throw new Error(result.error || 'Ukendt fejl');
     form.reset();
     setStatus(msg.sent, 'ok');
   } catch (err) {
