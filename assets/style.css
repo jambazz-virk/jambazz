@@ -190,3 +190,34 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -0.03em; line-height
 .lang-switch:hover { border-color: var(--text); color: var(--text) !important; }
 
 .cards-note { margin: 28px 0 0; color: var(--muted); font-size: .95rem; max-width: 70ch; }
+
+/* Zeleste: lille link i bunden, der åbner et billede */
+.zeleste-link-wrap { margin: 20px auto 0; }
+.zeleste-link { font-size: .5em; color: var(--muted); letter-spacing: .08em; text-decoration: none; }
+.zeleste-link:hover { color: var(--accent); }
+
+.zeleste { border: 0; padding: 0; background: transparent; max-width: min(92vw, 900px); overflow: visible; }
+.zeleste::backdrop {
+  background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 60%),
+              radial-gradient(circle at 75% 80%, color-mix(in srgb, var(--accent-2) 35%, transparent), transparent 60%),
+              rgba(10, 9, 14, .78);
+  backdrop-filter: blur(6px);
+}
+.polaroid {
+  margin: 0; background: #fffdf8; padding: 14px 14px 0; border-radius: 6px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6);
+  transform: rotate(-1.5deg);
+}
+.polaroid img { width: 100%; height: auto; max-height: 78vh; object-fit: contain; display: block; border-radius: 2px; }
+.polaroid figcaption {
+  font-family: "Inter", sans-serif; font-weight: 600; color: #16151a;
+  text-align: center; padding: 14px 0 18px; letter-spacing: .04em;
+}
+.polaroid figcaption span { color: #ff5a36; margin: 0 6px; }
+.zeleste[open] .polaroid { animation: zeleste-in .5s cubic-bezier(.2, .9, .3, 1.2); }
+@keyframes zeleste-in { from { opacity: 0; transform: rotate(-8deg) scale(.85); } }
+.zeleste-close {
+  position: absolute; top: -14px; right: -14px; width: 36px; height: 36px; border-radius: 50%;
+  border: 0; background: var(--accent); color: #fff; font-size: 22px; line-height: 1; cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) { .zeleste[open] .polaroid { animation: none; } }

@@ -83,3 +83,14 @@ form.addEventListener('submit', async (event) => {
     button.disabled = false;
   }
 });
+
+// Zeleste: åbn billedet i en dialog, luk ved klik udenfor
+const zeleste = document.getElementById('zeleste');
+document.querySelector('[data-zeleste]')?.addEventListener('click', (event) => {
+  if (!zeleste?.showModal) return;
+  event.preventDefault();
+  zeleste.showModal();
+});
+zeleste?.addEventListener('click', (event) => {
+  if (event.target === zeleste) zeleste.close();
+});
